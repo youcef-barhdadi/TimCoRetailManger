@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using TRMWPFUserInterface.Helper;
 using TRMWPFUserInterface.ViewModels;
 namespace TRMWPFUserInterface
 {
-    class Bootstrapper :BootstrapperBase
+    class Bootstrapper : BootstrapperBase
     {
 
 
@@ -17,6 +19,14 @@ namespace TRMWPFUserInterface
         public Bootstrapper()
         {
             Initialize();
+
+
+
+            // to make password work in MVVM
+            ConventionManager.AddElementConvention<PasswordBox>(
+         PasswordBoxHelper.BoundPasswordProperty,
+         "Password",
+         "PasswordChanged");
 
         }
 
